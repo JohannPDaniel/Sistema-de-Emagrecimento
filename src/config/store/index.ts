@@ -13,7 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import { rootReducer } from "./modules/rootReducer";
 
 const persistConfig = {
-	key: 'mui-app-academy',
+	key: 'app-health',
 	storage,
 	whitelist: ['userLogged'], 
 };

@@ -65,7 +65,7 @@ export const Login = () => {
 		dispatch(
 			login({
 				id: '1',
-				name: 'Usuário Demo',
+				name: registerName,
 				email: loginEmail,
 			})
 		);
