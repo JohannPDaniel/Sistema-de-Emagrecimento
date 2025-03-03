@@ -7,6 +7,7 @@ import {
 	useMediaQuery,
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import pessoaFeliz from '../../assets/pessoaFelizPorPerderPeso.avif';
 import theme from '../../config/themes/theme';
 
 export const BoxHeroMui = () => {
@@ -31,13 +32,10 @@ export const BoxHeroMui = () => {
 					<Grid2 size={{ xs: 12, md: 6 }}>
 						<Typography
 							variant='h2'
-							component='h1'
 							gutterBottom>
 							Transforme seu corpo e sua vida
 						</Typography>
-						<Typography
-							variant='h5'
-							paragraph>
+						<Typography variant='h5'>
 							Acompanhe seu progresso, visualize resultados e alcance suas metas
 							de emagrecimento.
 						</Typography>
@@ -72,7 +70,7 @@ export const BoxHeroMui = () => {
 					<Grid2 size={{ xs: 12, md: 6 }}>
 						<Box
 							component='img'
-							src='/placeholder.svg?height=400&width=500'
+							src={pessoaFeliz}
 							alt='Pessoa feliz após perder peso'
 							sx={{
 								width: '100%',

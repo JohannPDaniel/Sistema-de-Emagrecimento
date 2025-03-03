@@ -2,7 +2,6 @@ import { Box, Container, Grid2, Typography, Button } from '@mui/material';
 import theme from '../../config/themes/theme';
 import { Link as RouterLink } from 'react-router-dom';
 
-
 export const BoxCTA = () => {
 	return (
 		<Box
@@ -26,9 +25,7 @@ export const BoxCTA = () => {
 							gutterBottom>
 							Pronto para transformar seu corpo?
 						</Typography>
-						<Typography
-							variant='h6'
-							paragraph>
+						<Typography variant='h6'>
 							Comece sua jornada de emagrecimento hoje mesmo e veja resultados
 							reais.
 						</Typography>

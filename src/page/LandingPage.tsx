@@ -1,11 +1,13 @@
 import { Box } from '@mui/material';
-import { AppBarMui } from '../components/AppBarMui';
-import { BoxHeroMui } from '../components/BoxHeroMui';
-import { BoxFeatures } from '../components/BoxFeatures';
-import { BoxWorks } from '../components/BoxWorks';
-import { BoxTestimonials } from '../components/BoxTestimonials';
-import { BoxCTA } from '../components/BoxCTA';
-import { BoxFooter } from '../components/BoxFooter';
+import {
+	AppBarMui,
+	BoxHeroMui,
+	BoxFeatures,
+	BoxWorks,
+	BoxTestimonials,
+	BoxCTA,
+	BoxFooter,
+} from '../components/LandingPage';
 
 export const LandingPage = () => {
 	return (
