@@ -46,11 +46,9 @@ export const Login = () => {
 	const navigate = useNavigate();
 	const [tabValue, setTabValue] = useState(0);
 
-	// Login form state
 	const [loginEmail, setLoginEmail] = useState('');
 	const [loginPassword, setLoginPassword] = useState('');
 
-	// Register form state
 	const [registerName, setRegisterName] = useState('');
 	const [registerEmail, setRegisterEmail] = useState('');
 	const [registerPassword, setRegisterPassword] = useState('');

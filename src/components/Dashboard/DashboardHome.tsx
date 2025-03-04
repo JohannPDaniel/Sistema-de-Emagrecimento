@@ -15,6 +15,7 @@ import {
 import { Link as RouterLink } from 'react-router-dom';
 import { useAppSelector } from '../../config/store/hooks';
 import { calculateBMI, getBMICategory } from '../../utils/healthCalculations';
+import { WeightChart } from "./WeightChart";
 
 export const DashboardHome = () => {
 	const profile = useAppSelector((state) => state.healthData.profile);
@@ -22,30 +23,24 @@ export const DashboardHome = () => {
 		(state) => state.healthData.weightEntries
 	);
 
-	// Get latest weight entry
 	const latestEntry =
 		weightEntries.length > 0 ? weightEntries[weightEntries.length - 1] : null;
 
-	// Get previous weight entry for comparison
 	const previousEntry =
 		weightEntries.length > 1 ? weightEntries[weightEntries.length - 2] : null;
 
-	// Calculate weight change
 	const weightChange =
 		latestEntry && previousEntry
 			? latestEntry.weight - previousEntry.weight
 			: 0;
 
-	// Calculate current BMI
 	const currentBMI =
 		profile && latestEntry
 			? calculateBMI(latestEntry.weight, profile.height)
 			: null;
 
-	// Get BMI category
 	const bmiCategory = currentBMI ? getBMICategory(currentBMI) : null;
 
-	// Get last 7 entries for the chart
 	const recentEntries = weightEntries.slice(-7);
 
 	return (
@@ -64,9 +59,7 @@ export const DashboardHome = () => {
 							gutterBottom>
 							Bem-vindo ao EmagreceJá!
 						</Typography>
-						<Typography
-							variant='body1'
-							paragraph>
+						<Typography variant='body1'>
 							Para começar a acompanhar seu progresso, você precisa configurar
 							seu perfil e adicionar seu peso atual.
 						</Typography>

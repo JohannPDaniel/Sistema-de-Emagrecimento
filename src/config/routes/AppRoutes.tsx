@@ -1,7 +1,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { LandingPage } from "../../page/LandingPage";
-import { Login } from "../../page/Login";
-import { Dashboard } from "../../page/Dashboard";
+import { Dashboard, LandingPage, Login } from '../../page';
+import {
+	DashboardHome,
+	Profile,
+	WeightTracker,
+	ProtectedRoute,
+} from '../../components/Dashboard';
 
 const router = createBrowserRouter([
 	{
@@ -14,17 +18,21 @@ const router = createBrowserRouter([
 	},
 	{
 		path: '/dashboard',
-		element: <Dashboard />,
+		element: (
+			<ProtectedRoute>
+				<Dashboard />
+			</ProtectedRoute>
+		),
+		children: [
+			{ path: '', element: <DashboardHome /> },
+			{ path: 'weight', element: <WeightTracker /> },
+			{ path: 'profile', element: <Profile /> },
+		],
 	},
 ]);
 
 function AppRoutes() {
-	return (
-		<RouterProvider
-			key={Date.now()}
-			router={router}
-		/>
-	);
+	return <RouterProvider router={router} />;
 }
 
 export default AppRoutes;

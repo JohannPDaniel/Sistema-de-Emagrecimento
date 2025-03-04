@@ -31,7 +31,6 @@ const healthDataSlice = createSlice({
 		},
 		addWeightEntry: (state, action: PayloadAction<WeightEntry>) => {
 			state.weightEntries.push(action.payload);
-			// Sort entries by date
 			state.weightEntries.sort(
 				(a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
 			);

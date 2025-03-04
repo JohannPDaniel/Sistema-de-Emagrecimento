@@ -1,11 +1,9 @@
 import {
 	AccountCircle,
-	BarChart,
 	Dashboard as DashboardIcon,
 	Logout,
 	Menu as MenuIcon,
 	MonitorWeight,
-	Settings,
 } from '@mui/icons-material';
 import {
 	AppBar,
@@ -51,9 +49,7 @@ export const Dashboard = () => {
 	const menuItems = [
 		{ text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
 		{ text: 'Peso e IMC', icon: <MonitorWeight />, path: '/dashboard/weight' },
-		{ text: 'Gráficos', icon: <BarChart />, path: '/dashboard/charts' },
 		{ text: 'Perfil', icon: <AccountCircle />, path: '/dashboard/profile' },
-		{ text: 'Configurações', icon: <Settings />, path: '/dashboard/settings' },
 	];
 
 	const drawer = (
@@ -137,7 +133,7 @@ export const Dashboard = () => {
 					open={drawerOpen}
 					onClose={handleDrawerToggle}
 					ModalProps={{
-						keepMounted: true, // Better open performance on mobile
+						keepMounted: true,
 					}}>
 					{drawer}
 				</Drawer>
