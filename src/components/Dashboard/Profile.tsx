@@ -22,10 +22,14 @@ import {
 	setProfile,
 	UserProfile,
 } from '../../config/store/modules/healthDataSlice';
+import { showAlert } from '../../config/store/modules/alert';
+import SnackbarAlert from '../SnackBarAlert';
+import { useNavigate } from 'react-router-dom';
 
 export const Profile = () => {
 	const theme = useTheme();
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const profile = useAppSelector((state) => state.healthData.profile);
 
 	const [height, setHeight] = useState(profile?.height || 0);
@@ -35,7 +39,9 @@ export const Profile = () => {
 	);
 	const [goal, setGoal] = useState(profile?.goal || 0);
 
-	useEffect(() => {
+	useEffect( () => {
+		document.title = "Perfil";
+		
 		if (profile) {
 			setHeight(profile.height);
 			setAge(profile.age);
@@ -53,8 +59,18 @@ export const Profile = () => {
 		};
 
 		dispatch(setProfile(newProfile));
-	};
 
+		dispatch(
+			showAlert({
+				message: 'Perfil salvo com sucesso!',
+				type: 'success',
+			})
+		);
+
+		setTimeout(() => {
+			navigate('/dashboard/weight');
+		}, 3000);
+	};
 	return (
 		<Box>
 			<Typography
@@ -166,6 +182,7 @@ export const Profile = () => {
 					</Grid2>
 				</CardContent>
 			</Card>
+			<SnackbarAlert />
 		</Box>
 	);
 };

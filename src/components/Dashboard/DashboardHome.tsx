@@ -15,7 +15,8 @@ import {
 import { Link as RouterLink } from 'react-router-dom';
 import { useAppSelector } from '../../config/store/hooks';
 import { calculateBMI, getBMICategory } from '../../utils/healthCalculations';
-import { WeightChart } from "./WeightChart";
+import { WeightChart } from './WeightChart';
+import { useEffect } from "react";
 
 export const DashboardHome = () => {
 	const profile = useAppSelector((state) => state.healthData.profile);
@@ -41,7 +42,11 @@ export const DashboardHome = () => {
 
 	const bmiCategory = currentBMI ? getBMICategory(currentBMI) : null;
 
-	const recentEntries = weightEntries.slice(-7);
+	const recentEntries = weightEntries.slice( -7 );
+	
+	useEffect( () => {
+		document.title = "Dashboard"
+	}, [])
 
 	return (
 		<Box>
@@ -59,7 +64,9 @@ export const DashboardHome = () => {
 							gutterBottom>
 							Bem-vindo ao EmagreçaJá!
 						</Typography>
-						<Typography variant='body1' sx={{ mb: 1 }}>
+						<Typography
+							variant='body1'
+							sx={{ mb: 1 }}>
 							Para começar a acompanhar seu progresso, você precisa configurar
 							seu perfil e adicionar seu peso atual.
 						</Typography>
@@ -132,8 +139,10 @@ export const DashboardHome = () => {
 										color='textSecondary'>
 										{latestEntry
 											? `Última atualização: ${new Date(
-													latestEntry.date
-											  ).toLocaleDateString()}`
+													latestEntry.date + 'T00:00:00'
+											  ).toLocaleDateString('pt-BR', {
+													timeZone: 'UTC',
+											  })}`
 											: ''}
 									</Typography>
 								</CardContent>

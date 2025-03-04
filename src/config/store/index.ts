@@ -10,12 +10,12 @@ import {
 	REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { rootReducer } from "./modules/rootReducer";
+import { rootReducer } from './modules/rootReducer';
 
 const persistConfig = {
 	key: 'app-health',
 	storage,
-	whitelist: ['userLogged'], 
+	whitelist: ['auth', 'healthData'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -13,14 +13,14 @@ import {
 	Typography,
 	useTheme,
 } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import pessoaFeliz from '../assets/pessoaFeliz.webp';
-import { login, register } from '../config/store/modules/authSlice';
-import { useAppSelector } from '../config/store/hooks';
 import SnackbarAlert from '../components/SnackBarAlert';
+import { useAppSelector } from '../config/store/hooks';
 import { showAlert } from '../config/store/modules/alert';
+import { login, register } from '../config/store/modules/authSlice';
 
 interface TabPanelProps {
 	children?: React.ReactNode;
@@ -90,7 +90,7 @@ export const Login = () => {
 
 		setTimeout(() => {
 			navigate('/dashboard');
-		}, 2000);
+		}, 3000);
 	};
 
 	const handleRegister = (e: React.FormEvent<HTMLElement>) => {
@@ -114,6 +114,10 @@ export const Login = () => {
 
 		setTabValue(0);
 	};
+
+	useEffect( () => {
+		document.title = "Cadastro e Login"
+	}, [])
 	return (
 		<Box
 			sx={{

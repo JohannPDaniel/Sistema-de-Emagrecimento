@@ -22,7 +22,7 @@ import {
 	TextField,
 	Typography,
 } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../config/store/hooks';
 import {
@@ -34,6 +34,8 @@ import {
 import { calculateBMI } from '../../utils/healthCalculations';
 import { BMIChart } from './BMIChart';
 import { WeightChart } from './WeightChart';
+import { showAlert } from '../../config/store/modules/alert';
+import SnackbarAlert from "../SnackBarAlert";
 
 interface TabPanelProps {
 	children?: React.ReactNode;
@@ -104,6 +106,13 @@ export const WeightTracker = () => {
 			dispatch(addWeightEntry({ date: entryDate, weight }));
 		}
 
+		dispatch(
+			showAlert({
+				message: 'Registro criado com sucesso!',
+				type: 'success',
+			})
+		);
+
 		handleCloseDialog();
 	};
 
@@ -114,7 +123,11 @@ export const WeightTracker = () => {
 	const bmiData = weightEntries.map((entry) => ({
 		date: entry.date,
 		bmi: profile ? calculateBMI(entry.weight, profile.height) : 0,
-	}));
+	} ) );
+	
+	useEffect( () => {
+		document.title = 'Acompanhamento de Peso e IMC';
+	}, [])
 
 	return (
 		<Box>
@@ -323,6 +336,7 @@ export const WeightTracker = () => {
 					</Button>
 				</DialogActions>
 			</Dialog>
+			<SnackbarAlert />
 		</Box>
 	);
 };
