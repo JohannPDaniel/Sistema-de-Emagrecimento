@@ -17,7 +17,10 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import pessoaFeliz from '../assets/pessoaFeliz.webp';
-import { login } from '../config/store/modules/authSlice';
+import { login, register } from '../config/store/modules/authSlice';
+import { useAppSelector } from '../config/store/hooks';
+import SnackbarAlert from '../components/SnackBarAlert';
+import { showAlert } from '../config/store/modules/alert';
 
 interface TabPanelProps {
 	children?: React.ReactNode;
@@ -43,6 +46,7 @@ function TabPanel(props: TabPanelProps) {
 export const Login = () => {
 	const theme = useTheme();
 	const dispatch = useDispatch();
+	const users = useAppSelector((state) => state.auth.users);
 	const navigate = useNavigate();
 	const [tabValue, setTabValue] = useState(0);
 
@@ -60,28 +64,56 @@ export const Login = () => {
 
 	const handleLogin = (e: React.FormEvent<HTMLElement>) => {
 		e.preventDefault();
+
+		const user = users.find(
+			(u) => u.email === loginEmail && u.password === loginPassword
+		);
+
+		if (!user) {
+			dispatch(
+				showAlert({
+					message: 'Email ou senha inválidos',
+					type: 'error',
+				})
+			);
+			return;
+		}
+
 		dispatch(
-			login({
-				id: '1',
-				name: registerName,
-				email: loginEmail,
+			showAlert({
+				message: 'Login efetuado com sucesso!',
+				type: 'success',
 			})
 		);
-		navigate('/dashboard');
+
+		dispatch(login({ email: loginEmail, password: loginPassword }));
+
+		setTimeout(() => {
+			navigate('/dashboard');
+		}, 2000);
 	};
 
 	const handleRegister = (e: React.FormEvent<HTMLElement>) => {
 		e.preventDefault();
+
+		const newUser = {
+			id: crypto.randomUUID(),
+			name: registerName,
+			email: registerEmail,
+			password: registerPassword,
+		};
+
+		dispatch(register(newUser));
+
 		dispatch(
-			login({
-				id: '1',
-				name: registerName,
-				email: registerEmail,
+			showAlert({
+				message: 'Cadastro realizado com sucesso!',
+				type: 'success',
 			})
 		);
+
 		setTabValue(0);
 	};
-
 	return (
 		<Box
 			sx={{
@@ -111,7 +143,7 @@ export const Login = () => {
 								component='h1'
 								gutterBottom
 								fontWeight='bold'>
-								EmagreceJá
+								EmagreçaJá
 							</Typography>
 							<Typography
 								variant='h5'
@@ -275,6 +307,8 @@ export const Login = () => {
 					</Grid2>
 				</Grid2>
 			</Container>
+
+			<SnackbarAlert />
 		</Box>
 	);
 };

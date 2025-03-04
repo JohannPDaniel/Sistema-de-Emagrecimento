@@ -1,8 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { authReducer } from "./authSlice";
 import { healthDataReducer } from "./healthDataSlice";
+import { authReducer } from "./authSlice";
+import { alertReducer } from './alert';
 
 export const rootReducer = combineReducers({
     auth: authReducer,
-    healthData: healthDataReducer
+    healthData: healthDataReducer,
+    alert: alertReducer
 });

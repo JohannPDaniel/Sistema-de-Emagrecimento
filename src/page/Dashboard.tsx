@@ -24,12 +24,20 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Outlet, Link as RouterLink, useNavigate } from 'react-router-dom';
+import {
+	Outlet,
+	Link as RouterLink,
+	useLocation,
+	useNavigate,
+} from 'react-router-dom';
 import { useAppSelector } from '../config/store/hooks';
 import { logout } from '../config/store/modules/authSlice';
+import { hiddenAlert } from "../config/store/modules/alert";
 
 export const Dashboard = () => {
 	const theme = useTheme();
+	const location = useLocation();
+
 	const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -42,9 +50,11 @@ export const Dashboard = () => {
 	};
 
 	const handleLogout = () => {
+		dispatch(hiddenAlert()); 
 		dispatch(logout());
 		navigate('/');
 	};
+
 
 	const menuItems = [
 		{ text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
@@ -61,23 +71,32 @@ export const Dashboard = () => {
 					variant='h6'
 					color='primary'
 					fontWeight='bold'>
-					EmagreceJá
+					EmagreçaJá
 				</Typography>
 			</Box>
 			<List>
-				{menuItems.map((item) => (
-					<ListItem
-						key={item.text}
-						disablePadding>
-						<ListItemButton
-							component={RouterLink}
-							to={item.path}
-							onClick={isMobile ? handleDrawerToggle : undefined}>
-							<ListItemIcon>{item.icon}</ListItemIcon>
-							<ListItemText primary={item.text} />
-						</ListItemButton>
-					</ListItem>
-				))}
+				{menuItems.map((item) => {
+					const isActive = location.pathname === item.path;
+
+					return (
+						<ListItem
+							key={item.text}
+							disablePadding>
+							<ListItemButton
+								component={RouterLink}
+								to={item.path}
+								onClick={isMobile ? handleDrawerToggle : undefined}
+								sx={{
+									backgroundColor: isActive
+										? 'rgba(0, 0, 0, 0.2)'
+										: 'transparent',
+								}}>
+								<ListItemIcon>{item.icon}</ListItemIcon>
+								<ListItemText primary={item.text} />
+							</ListItemButton>
+						</ListItem>
+					);
+				})}
 				<ListItem disablePadding>
 					<ListItemButton onClick={handleLogout}>
 						<ListItemIcon>
@@ -114,7 +133,7 @@ export const Dashboard = () => {
 						variant='h6'
 						component='div'
 						sx={{ flexGrow: 1 }}>
-						{isMobile ? 'EmagreceJá' : `Olá, ${user?.name || 'Usuário'}`}
+						{isMobile ? 'EmagreçaJá' : `Olá, ${user?.name || 'Usuário'}`}
 					</Typography>
 					{!isMobile && (
 						<Button

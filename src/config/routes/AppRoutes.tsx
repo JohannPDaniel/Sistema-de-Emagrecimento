@@ -3,8 +3,8 @@ import { Dashboard, LandingPage, Login } from '../../page';
 import {
 	DashboardHome,
 	Profile,
-	WeightTracker,
 	ProtectedRoute,
+	WeightTracker,
 } from '../../components/Dashboard';
 
 const router = createBrowserRouter([
@@ -20,7 +20,8 @@ const router = createBrowserRouter([
 		path: '/dashboard',
 		element: (
 			<ProtectedRoute>
-				<Dashboard />
+				{' '}
+				<Dashboard />{' '}
 			</ProtectedRoute>
 		),
 		children: [

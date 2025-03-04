@@ -57,9 +57,9 @@ export const DashboardHome = () => {
 						<Typography
 							variant='h6'
 							gutterBottom>
-							Bem-vindo ao EmagreceJá!
+							Bem-vindo ao EmagreçaJá!
 						</Typography>
-						<Typography variant='body1'>
+						<Typography variant='body1' sx={{ mb: 1 }}>
 							Para começar a acompanhar seu progresso, você precisa configurar
 							seu perfil e adicionar seu peso atual.
 						</Typography>

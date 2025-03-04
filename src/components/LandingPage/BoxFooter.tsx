@@ -2,7 +2,6 @@ import { Box, Container, Grid2, Typography, Stack, Link } from '@mui/material';
 import theme from '../../config/themes/theme';
 import { Link as RouterLink } from 'react-router-dom';
 
-
 export const BoxFooter = () => {
 	return (
 		<Box
@@ -19,7 +18,7 @@ export const BoxFooter = () => {
 						<Typography
 							variant='h6'
 							gutterBottom>
-							EmagreceJá
+							EmagreçaJá
 						</Typography>
 						<Typography
 							variant='body2'
@@ -66,9 +65,8 @@ export const BoxFooter = () => {
 						</Typography>
 						<Typography
 							variant='body2'
-							color='grey.400'
-							paragraph>
-							contato@emagreceJa.com
+							color='grey.400'>
+							contato@emagrecaJa.com
 						</Typography>
 						<Typography
 							variant='body2'
@@ -112,7 +110,7 @@ export const BoxFooter = () => {
 					<Typography
 						variant='body2'
 						color='grey.500'>
-						© {new Date().getFullYear()} EmagreceJá. Todos os direitos
+						© {new Date().getFullYear()} EmagreçaJá. Todos os direitos
 						reservados.
 					</Typography>
 				</Box>

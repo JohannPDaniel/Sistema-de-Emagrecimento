@@ -42,7 +42,7 @@ export const AppBarMui = () => {
 							fontWeight: 700,
 							color: theme.palette.primary.main,
 						}}>
-						EmagreceJá
+						EmagreçaJá
 					</Typography>
 					<Stack
 						direction='row'
