@@ -8,8 +8,13 @@ import {
 	BoxCTA,
 	BoxFooter,
 } from '../components/LandingPage';
+import { useEffect } from "react";
 
 export const LandingPage = () => {
+	useEffect( () => {
+		document.title = "Pagina principal"
+	}, [] )
+	
 	return (
 		<Box>
 			{/* Navbar */}

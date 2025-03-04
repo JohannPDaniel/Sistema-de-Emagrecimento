@@ -21,6 +21,7 @@ import SnackbarAlert from '../components/SnackBarAlert';
 import { useAppSelector } from '../config/store/hooks';
 import { showAlert } from '../config/store/modules/alert';
 import { login, register } from '../config/store/modules/authSlice';
+import { ArrowBack } from '@mui/icons-material';
 
 interface TabPanelProps {
 	children?: React.ReactNode;
@@ -115,9 +116,9 @@ export const Login = () => {
 		setTabValue(0);
 	};
 
-	useEffect( () => {
-		document.title = "Cadastro e Login"
-	}, [])
+	useEffect(() => {
+		document.title = 'Cadastro e Login';
+	}, []);
 	return (
 		<Box
 			sx={{
@@ -306,6 +307,21 @@ export const Login = () => {
 										</Stack>
 									</form>
 								</TabPanel>
+								<Box
+									sx={{
+										display: 'flex',
+										alignItems: 'center',
+										justifyContent: 'center',
+										mt: 2
+									}}>
+									<Button
+										startIcon={<ArrowBack />}
+										onClick={() => navigate('/')}
+										variant='outlined'
+										color='secondary'>
+										Voltar para Home
+									</Button>
+								</Box>
 							</CardContent>
 						</Card>
 					</Grid2>
