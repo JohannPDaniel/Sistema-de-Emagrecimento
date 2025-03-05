@@ -3,9 +3,10 @@ import { Typography } from '@mui/material';
 interface TypographyGutterProps {
 	children: React.ReactNode;
 	title?: 'subtitle1' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-	align?: 'center';
+	align?: 'center' | 'right' | 'left' | 'inherit' | 'justify'; // Apenas valores aceitos
 	color?: string;
-	fontWeight?: "bold"
+	fontWeight?: 'bold';
+	sx?: object; 
 }
 
 export const TypographyGutter = ({
@@ -14,6 +15,7 @@ export const TypographyGutter = ({
 	align,
 	color,
 	fontWeight,
+	sx,
 }: TypographyGutterProps) => {
 	return (
 		<Typography
@@ -21,6 +23,7 @@ export const TypographyGutter = ({
 			align={align}
 			color={color}
 			fontWeight={fontWeight}
+			sx={sx} // Usa sx para responsividade
 			gutterBottom>
 			{children}
 		</Typography>

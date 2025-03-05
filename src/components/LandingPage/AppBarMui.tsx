@@ -2,13 +2,13 @@ import {
 	AppBar,
 	Button,
 	Container,
-	Stack,
+	Grid2,
 	Toolbar,
 	Typography,
 } from '@mui/material';
 import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import theme from "../../config/themes/theme";
+import theme from '../../config/themes/theme';
 
 export const AppBarMui = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -44,24 +44,27 @@ export const AppBarMui = () => {
 						}}>
 						EmagreçaJá
 					</Typography>
-					<Stack
-						direction='row'
-						spacing={2}>
+					<Grid2
+						container
+						sx={{ gap: 1 }}>
 						<Button
+							sx={{ px: { xs: 1, md: 1 }, py: { xs: 0 } }}
 							component={RouterLink}
+							size='small'
 							to='/login'
 							variant='contained'
 							color='primary'>
 							Login
 						</Button>
 						<Button
+							sx={{ px: { xs: 1, md: 2} }}
 							component={RouterLink}
 							to='/login'
 							variant='contained'
 							color='primary'>
 							Começar Agora
 						</Button>
-					</Stack>
+					</Grid2>
 				</Toolbar>
 			</Container>
 		</AppBar>

@@ -27,14 +27,18 @@ export const BoxHeroMui = () => {
 					<Grid2 size={{ xs: 12, md: 6 }}>
 						<TypographyGutter
 							title='h2'
+							sx={{ textAlign: { xs: 'center' } }}
 							children='Transforme seu corpo e sua vida'
 						/>
 						<CustomTypography
 							variant='h5'
+							sx={{ textAlign: { xs: 'center' } }}
 							children='Acompanhe seu progresso, visualize resultados e alcance suas metas
 							de emagrecimento.'
 						/>
-						<Box mt={4}>
+						<Box
+							mt={4}
+							sx={{ display: 'flex', justifyContent: 'center' }}>
 							<Button
 								component={RouterLink}
 								to='/login'
@@ -52,6 +56,8 @@ export const BoxHeroMui = () => {
 									backgroundColor: 'rgba(255,255,255,0.1)',
 									borderColor: 'white',
 									color: 'white',
+									width: 130,
+									height: 48,
 									'&:hover': {
 										backgroundColor: 'rgba(255,255,255,0.2)',
 										borderColor: 'white',
@@ -62,7 +68,13 @@ export const BoxHeroMui = () => {
 							</Button>
 						</Box>
 					</Grid2>
-					<Grid2 size={{ xs: 12, md: 6 }}>
+					<Grid2
+						size={{ xs: 12, md: 6 }}
+						sx={{
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'center',
+						}}>
 						<Box
 							component='img'
 							src={pessoaFeliz}
@@ -73,6 +85,9 @@ export const BoxHeroMui = () => {
 								height: 'auto',
 								borderRadius: 4,
 								boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center',
 							}}
 						/>
 					</Grid2>
