@@ -1,10 +1,4 @@
-import {
-	AccountCircle,
-	Dashboard as DashboardIcon,
-	Logout,
-	Menu as MenuIcon,
-	MonitorWeight,
-} from '@mui/icons-material';
+import { Logout, Menu as MenuIcon } from '@mui/icons-material';
 import {
 	AppBar,
 	Box,
@@ -12,11 +6,6 @@ import {
 	Container,
 	Drawer,
 	IconButton,
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemIcon,
-	ListItemText,
 	Toolbar,
 	Typography,
 	useMediaQuery,
@@ -24,19 +13,14 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-	Outlet,
-	Link as RouterLink,
-	useLocation,
-	useNavigate,
-} from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { DrawerComponent } from '../components/Dashboard/DrawerComponent';
 import { useAppSelector } from '../config/store/hooks';
+import { hiddenAlert } from '../config/store/modules/alert';
 import { logout } from '../config/store/modules/authSlice';
-import { hiddenAlert } from "../config/store/modules/alert";
 
 export const Dashboard = () => {
 	const theme = useTheme();
-	const location = useLocation();
 
 	const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 	const dispatch = useDispatch();
@@ -50,64 +34,10 @@ export const Dashboard = () => {
 	};
 
 	const handleLogout = () => {
-		dispatch(hiddenAlert()); 
+		dispatch(hiddenAlert());
 		dispatch(logout());
 		navigate('/');
 	};
-
-
-	const menuItems = [
-		{ text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
-		{ text: 'Peso e IMC', icon: <MonitorWeight />, path: '/dashboard/weight' },
-		{ text: 'Perfil', icon: <AccountCircle />, path: '/dashboard/profile' },
-	];
-
-	const drawer = (
-		<Box
-			sx={{ width: 250 }}
-			role='presentation'>
-			<Box sx={{ p: 2, borderBottom: `1px solid ${theme.palette.divider}` }}>
-				<Typography
-					variant='h6'
-					color='primary'
-					fontWeight='bold'>
-					EmagreçaJá
-				</Typography>
-			</Box>
-			<List>
-				{menuItems.map((item) => {
-					const isActive = location.pathname === item.path;
-
-					return (
-						<ListItem
-							key={item.text}
-							disablePadding>
-							<ListItemButton
-								component={RouterLink}
-								to={item.path}
-								onClick={isMobile ? handleDrawerToggle : undefined}
-								sx={{
-									backgroundColor: isActive
-										? 'rgba(0, 0, 0, 0.2)'
-										: 'transparent',
-								}}>
-								<ListItemIcon>{item.icon}</ListItemIcon>
-								<ListItemText primary={item.text} />
-							</ListItemButton>
-						</ListItem>
-					);
-				})}
-				<ListItem disablePadding>
-					<ListItemButton onClick={handleLogout}>
-						<ListItemIcon>
-							<Logout />
-						</ListItemIcon>
-						<ListItemText primary='Sair' />
-					</ListItemButton>
-				</ListItem>
-			</List>
-		</Box>
-	);
 
 	return (
 		<Box sx={{ display: 'flex' }}>
@@ -154,7 +84,7 @@ export const Dashboard = () => {
 					ModalProps={{
 						keepMounted: true,
 					}}>
-					{drawer}
+					{<DrawerComponent />}
 				</Drawer>
 			) : (
 				<Drawer
@@ -166,7 +96,7 @@ export const Dashboard = () => {
 					}}
 					open>
 					<Toolbar />
-					{drawer}
+					{<DrawerComponent />}
 				</Drawer>
 			)}
 
