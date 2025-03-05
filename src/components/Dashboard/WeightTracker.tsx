@@ -299,6 +299,7 @@ export const WeightTracker = () => {
 				<DialogTitle>
 					{editingEntry ? 'Editar Registro de Peso' : 'Novo Registro de Peso'}
 				</DialogTitle>
+				
 				<DialogContent>
 					<Grid2
 						container
@@ -326,6 +327,7 @@ export const WeightTracker = () => {
 						</Grid2>
 					</Grid2>
 				</DialogContent>
+
 				<DialogActions>
 					<Button onClick={handleCloseDialog}>Cancelar</Button>
 					<Button
