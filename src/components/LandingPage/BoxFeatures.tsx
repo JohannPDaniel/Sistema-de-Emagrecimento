@@ -7,6 +7,7 @@ import {
 	CardContent,
 } from '@mui/material';
 import { features } from '../../constants/feature';
+import { TypographyGutter } from './BoxFooter/TypographyGutter';
 
 export const BoxFeatures = () => {
 	return (
@@ -14,18 +15,15 @@ export const BoxFeatures = () => {
 			id='features'
 			sx={{ py: 10 }}>
 			<Container>
-				<Typography
-					variant='h3'
-					component='h2'
+				<TypographyGutter
+					title='h3'
 					align='center'
-					gutterBottom>
-					Como podemos ajudar você
-				</Typography>
+					children='Como podemos ajudar você'
+				/>
 				<Typography
 					variant='h6'
 					align='center'
 					color='textSecondary'
-					paragraph
 					sx={{ mb: 6 }}>
 					Ferramentas poderosas para acompanhar seu progresso e alcançar
 					resultados

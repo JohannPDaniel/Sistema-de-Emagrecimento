@@ -1,6 +1,9 @@
-import { Box, Container, Grid2, Typography, Stack, Link } from '@mui/material';
-import theme from '../../config/themes/theme';
+import { Box, Container, Grid2, Link, Stack, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import theme from '../../config/themes/theme';
+import { socials } from '../../constants/socials';
+import { CustomTypography } from './BoxFooter/CustomTypography';
+import { TypographyGutter } from './BoxFooter/TypographyGutter';
 
 export const BoxFooter = () => {
 	return (
@@ -15,24 +18,19 @@ export const BoxFooter = () => {
 					container
 					spacing={4}>
 					<Grid2 size={{ xs: 12, md: 4 }}>
-						<Typography
-							variant='h6'
-							gutterBottom>
-							EmagreçaJá
-						</Typography>
-						<Typography
+						<TypographyGutter
+							children='EmagreçaJá'
+							title='h6'
+						/>
+						<CustomTypography
 							variant='body2'
-							color='grey.400'>
-							Sua plataforma completa para acompanhamento de emagrecimento e
-							saúde.
-						</Typography>
+							color='grey.400'
+							children='Sua plataforma completa para acompanhamento de emagrecimento e
+							saúde.'
+						/>
 					</Grid2>
 					<Grid2 size={{ xs: 12, md: 2 }}>
-						<Typography
-							variant='subtitle1'
-							gutterBottom>
-							Links Rápidos
-						</Typography>
+						<TypographyGutter children='Links Rápidos' />
 						<Link
 							component={RouterLink}
 							to='/'
@@ -58,47 +56,33 @@ export const BoxFooter = () => {
 						</Link>
 					</Grid2>
 					<Grid2 size={{ xs: 12, md: 3 }}>
-						<Typography
-							variant='subtitle1'
-							gutterBottom>
-							Contato
-						</Typography>
-						<Typography
+						<TypographyGutter children='Contato' />
+						<CustomTypography
 							variant='body2'
-							color='grey.400'>
-							contato@emagrecaJa.com
-						</Typography>
-						<Typography
+							color='grey.400'
+							children='contato@emagrecaJa.com'
+						/>
+						<CustomTypography
 							variant='body2'
-							color='grey.400'>
-							(11) 99999-9999
-						</Typography>
+							color='grey.400'
+							children='(11) 99999-9999'
+						/>
 					</Grid2>
 					<Grid2 size={{ xs: 12, md: 3 }}>
-						<Typography
-							variant='subtitle1'
-							gutterBottom>
-							Redes Sociais
-						</Typography>
-						<Stack
-							direction='row'
-							spacing={2}>
-							<Link
-								href='#'
-								color='inherit'>
-								Instagram
-							</Link>
-							<Link
-								href='#'
-								color='inherit'>
-								Facebook
-							</Link>
-							<Link
-								href='#'
-								color='inherit'>
-								Twitter
-							</Link>
-						</Stack>
+						<TypographyGutter children='Redes Sociais' />
+
+						{socials.map((social, index) => (
+							<Stack
+								key={index}
+								direction='row'
+								spacing={2}>
+								<Link
+									href='#'
+									color='inherit'>
+									{social}
+								</Link>
+							</Stack>
+						))}
 					</Grid2>
 				</Grid2>
 				<Box

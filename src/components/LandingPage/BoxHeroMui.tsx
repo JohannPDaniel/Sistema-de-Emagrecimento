@@ -1,14 +1,9 @@
-import {
-	Box,
-	Button,
-	Container,
-	Grid2,
-	Typography,
-	useMediaQuery,
-} from '@mui/material';
+import { Box, Button, Container, Grid2, useMediaQuery } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import pessoaFeliz from '../../assets/pessoaFelizPorPerderPeso.avif';
 import theme from '../../config/themes/theme';
+import { TypographyGutter } from './BoxFooter/TypographyGutter';
+import { CustomTypography } from './BoxFooter/CustomTypography';
 
 export const BoxHeroMui = () => {
 	const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -30,15 +25,15 @@ export const BoxHeroMui = () => {
 					spacing={4}
 					alignItems='center'>
 					<Grid2 size={{ xs: 12, md: 6 }}>
-						<Typography
-							variant='h2'
-							gutterBottom>
-							Transforme seu corpo e sua vida
-						</Typography>
-						<Typography variant='h5'>
-							Acompanhe seu progresso, visualize resultados e alcance suas metas
-							de emagrecimento.
-						</Typography>
+						<TypographyGutter
+							title='h2'
+							children='Transforme seu corpo e sua vida'
+						/>
+						<CustomTypography
+							variant='h5'
+							children='Acompanhe seu progresso, visualize resultados e alcance suas metas
+							de emagrecimento.'
+						/>
 						<Box mt={4}>
 							<Button
 								component={RouterLink}
