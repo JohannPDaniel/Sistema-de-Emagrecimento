@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
 
 interface CustomTypographyProps {
-	variant?: 'body2' | "h5";
+	variant?: 'body1' | "body2" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 	color?: string;
 	children?: React.ReactNode;
 }

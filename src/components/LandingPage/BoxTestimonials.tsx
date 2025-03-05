@@ -8,23 +8,21 @@ import {
 	Divider,
 } from '@mui/material';
 import { testimonials } from '../../constants/testimonials';
+import { TypographyGutter } from "./BoxFooter/TypographyGutter";
 
 export const BoxTestimonials = () => {
 	return (
 		<Box sx={{ py: 10 }}>
 			<Container>
-				<Typography
-					variant='h3'
-					component='h2'
+				<TypographyGutter
+					title='h3'
 					align='center'
-					gutterBottom>
-					Histórias de Sucesso
-				</Typography>
+					children='Histórias de Sucesso'
+				/>
 				<Typography
 					variant='h6'
 					align='center'
 					color='textSecondary'
-					paragraph
 					sx={{ mb: 6 }}>
 					Veja o que nossos usuários estão dizendo
 				</Typography>
@@ -40,7 +38,6 @@ export const BoxTestimonials = () => {
 								<CardContent>
 									<Typography
 										variant='body1'
-										paragraph
 										sx={{ fontStyle: 'italic' }}>
 										"{testimonial.text}"
 									</Typography>

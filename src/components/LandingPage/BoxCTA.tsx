@@ -1,6 +1,8 @@
-import { Box, Container, Grid2, Typography, Button } from '@mui/material';
+import { Box, Container, Grid2, Button } from '@mui/material';
 import theme from '../../config/themes/theme';
 import { Link as RouterLink } from 'react-router-dom';
+import { TypographyGutter } from './BoxFooter/TypographyGutter';
+import { CustomTypography } from './BoxFooter/CustomTypography';
 
 export const BoxCTA = () => {
 	return (
@@ -19,16 +21,15 @@ export const BoxCTA = () => {
 					<Grid2
 						size={{ xs: 12, md: 8 }}
 						textAlign='center'>
-						<Typography
-							variant='h3'
-							component='h2'
-							gutterBottom>
-							Pronto para transformar seu corpo?
-						</Typography>
-						<Typography variant='h6'>
-							Comece sua jornada de emagrecimento hoje mesmo e veja resultados
-							reais.
-						</Typography>
+						<TypographyGutter
+							title='h3'
+							children='Pronto para transformar seu corpo?'
+						/>
+						<CustomTypography
+							variant='h6'
+							children='Comece sua jornada de emagrecimento hoje mesmo e veja resultados
+							reais.'
+						/>
 						<Button
 							component={RouterLink}
 							to='/login'

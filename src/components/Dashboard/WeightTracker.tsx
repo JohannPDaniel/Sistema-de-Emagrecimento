@@ -32,10 +32,10 @@ import {
 	WeightEntry,
 } from '../../config/store/modules/healthDataSlice';
 import { calculateBMI } from '../../utils/healthCalculations';
-import { BMIChart } from './BMIChart';
 import { WeightChart } from './WeightChart';
 import { showAlert } from '../../config/store/modules/alert';
 import SnackbarAlert from "../SnackBarAlert";
+import { BMIChart } from "./BMIChart";
 
 interface TabPanelProps {
 	children?: React.ReactNode;

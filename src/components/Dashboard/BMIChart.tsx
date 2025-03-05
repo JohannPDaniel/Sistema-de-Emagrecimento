@@ -11,6 +11,7 @@ import {
 	XAxis,
 	YAxis,
 } from 'recharts';
+import { RefLines } from '../../constants/RefLine';
 
 interface BMIData {
 	date: string;
@@ -57,31 +58,15 @@ export const BMIChart: React.FC<BMIChartProps> = ({ data }) => {
 				<Tooltip />
 				<Legend />
 
-				{/* Reference lines for BMI categories */}
-				<ReferenceLine
-					y={18.5}
-					stroke='#7ac3a7'
-					strokeDasharray='3 3'
-					label={{ value: 'Abaixo do Peso', position: 'insideTopLeft' }}
-				/>
-				<ReferenceLine
-					y={24.9}
-					stroke='#f5c35a'
-					strokeDasharray='3 3'
-					label={{ value: 'Normal', position: 'insideTopLeft' }}
-				/>
-				<ReferenceLine
-					y={29.9}
-					stroke='#e98b5c'
-					strokeDasharray='3 3'
-					label={{ value: 'Sobrepeso', position: 'insideTopLeft' }}
-				/>
-				<ReferenceLine
-					y={35}
-					stroke='#d9534f'
-					strokeDasharray='3 3'
-					label={{ value: 'Obesidade', position: 'insideTopLeft' }}
-				/>
+				{RefLines.map((rl, index) => (
+					<ReferenceLine
+						key={index}
+						y={rl.numberY}
+						stroke={rl.stroke}
+						strokeDasharray={rl.strokeDasharray}
+						label={{ value: rl.label.value, position: rl.label.position }}
+					/>
+				))}
 
 				<Line
 					type='monotone'
