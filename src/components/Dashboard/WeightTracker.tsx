@@ -34,8 +34,8 @@ import {
 import { calculateBMI } from '../../utils/healthCalculations';
 import { WeightChart } from './WeightChart';
 import { showAlert } from '../../config/store/modules/alert';
-import SnackbarAlert from "../SnackBarAlert";
-import { BMIChart } from "./BMIChart";
+import SnackbarAlert from '../SnackBarAlert';
+import { BMIChart } from './BMIChart';
 
 interface TabPanelProps {
 	children?: React.ReactNode;
@@ -123,19 +123,21 @@ export const WeightTracker = () => {
 	const bmiData = weightEntries.map((entry) => ({
 		date: entry.date,
 		bmi: profile ? calculateBMI(entry.weight, profile.height) : 0,
-	} ) );
-	
-	useEffect( () => {
+	}));
+
+	useEffect(() => {
 		document.title = 'Acompanhamento de Peso e IMC';
-	}, [])
+	}, []);
 
 	return (
 		<Box>
 			<Box
 				sx={{
 					display: 'flex',
+					flexDirection: { xs: 'column', md: 'row' },
 					justifyContent: 'space-between',
-					alignItems: 'center',
+					alignItems: { xs: 'flex-start' },
+					gap: 1,
 					mb: 3,
 				}}>
 				<Typography variant='h4'>Acompanhamento de Peso e IMC</Typography>
@@ -154,15 +156,23 @@ export const WeightTracker = () => {
 						value={tabValue}
 						onChange={handleTabChange}
 						centered>
-						<Tab label='Gráfico de Peso' />
-						<Tab label='Gráfico de IMC' />
-						<Tab label='Histórico' />
+						<Tab
+							sx={{ fontSize: { xs: 11, sm: 14 } }}
+							label='Gráfico de Peso'
+						/>
+						<Tab
+							sx={{ fontSize: { xs: 11, sm: 14 } }}
+							label='Gráfico de IMC'
+						/>
+						<Tab
+							sx={{ fontSize: { xs: 11, sm: 14 } }}
+							label='Histórico'
+						/>
 					</Tabs>
-
 					<TabPanel
 						value={tabValue}
 						index={0}>
-						<Box sx={{ height: 400 }}>
+						<Box sx={{ width: '100%', maxWidth: 600, margin: 'auto' }}>
 							{weightEntries.length > 0 ? (
 								<WeightChart data={weightEntries} />
 							) : (
@@ -187,7 +197,7 @@ export const WeightTracker = () => {
 					<TabPanel
 						value={tabValue}
 						index={1}>
-						<Box sx={{ height: 400 }}>
+						<Box sx={{ width: '100%', maxWidth: 600, margin: 'auto' }}>
 							{profile && weightEntries.length > 0 ? (
 								<BMIChart data={bmiData} />
 							) : (
@@ -299,7 +309,7 @@ export const WeightTracker = () => {
 				<DialogTitle>
 					{editingEntry ? 'Editar Registro de Peso' : 'Novo Registro de Peso'}
 				</DialogTitle>
-				
+
 				<DialogContent>
 					<Grid2
 						container
