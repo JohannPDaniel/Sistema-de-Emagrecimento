@@ -112,7 +112,7 @@ src/
     <img src="https://img.shields.io/badge/FontSource-FFFF00?style=for-the-badge&logo=https://github.com/mayannaoliveira.png&logoColor=white" />
 </div>
 
-## Contate me
+## ☎️ Contate me
 
 <a href="https://wa.me/5519991069456">
     <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="whatsap" />
