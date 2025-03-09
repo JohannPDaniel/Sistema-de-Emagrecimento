@@ -1,8 +1,10 @@
 # EmagreceJá - Aplicativo de Acompanhamento de Emagrecimento
 
+<div align="center">
 
 ![Emagreça já](/src/assets/EmagreçaJá.png)
 
+</div>
 
 ## 📋 Sobre o Projeto
 
@@ -20,7 +22,6 @@ O objetivo principal é fornecer uma ferramenta completa que motive os usuários
 - **Perfil Personalizado**: Configure suas informações pessoais como altura, idade e gênero
 - **Dashboard Intuitivo**: Visualize estatísticas e resumos do seu progresso
 - **Design Responsivo**: Acesse a aplicação em qualquer dispositivo
-
 
 ## 📊 Screenshots
 
@@ -46,7 +47,6 @@ npm install
 ```
 
 3. Inicie a aplicação em modo de desenvolvimento:
-
 
 ```bash
 npm run dev
