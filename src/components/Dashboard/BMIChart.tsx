@@ -77,7 +77,7 @@ export const BMIChart: React.FC<BMIChartProps> = ({ data }) => {
 							label={{
 								value: rl.label.value,
 								position: rl.label.position,
-								style: { fontSize: isSmallScreen ? 10 : 14 }, // Ajusta o tamanho do texto
+								style: { fontSize: isSmallScreen ? 10 : 14 }, 
 							}}
 						/>
 					))}

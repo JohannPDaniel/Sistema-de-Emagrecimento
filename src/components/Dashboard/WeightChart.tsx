@@ -17,9 +17,8 @@ interface WeightChartProps {
 
 export const WeightChart: React.FC<WeightChartProps> = ({ data }) => {
 	const theme = useTheme();
-	const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm')); // Detecta telas pequenas
+	const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm')); 
 
-	// Formata os dados para o gráfico
 	const chartData = data.map((entry) => ({
 		date: new Date(entry.date + 'T00:00:00').toLocaleDateString('pt-BR', {
 			timeZone: 'UTC',
@@ -31,7 +30,7 @@ export const WeightChart: React.FC<WeightChartProps> = ({ data }) => {
 		<Box
 			sx={{
 				width: '100%',
-				height: isSmallScreen ? 250 : 400,
+				height: isSmallScreen ? 250 : 310,
 				margin: 'auto',
 			}}>
 			<ResponsiveContainer
@@ -40,10 +39,10 @@ export const WeightChart: React.FC<WeightChartProps> = ({ data }) => {
 				<LineChart
 					data={chartData}
 					margin={{
-						top: 20,
-						right: 30,
-						left: 20,
-						bottom: 20,
+						top: 10,
+						right: 10,
+						left: 10,
+						bottom: 10,
 					}}>
 					<CartesianGrid
 						strokeDasharray='3 3'
@@ -54,7 +53,7 @@ export const WeightChart: React.FC<WeightChartProps> = ({ data }) => {
 						tick={{
 							fill: theme.palette.text.secondary,
 							fontSize: isSmallScreen ? 10 : 12,
-						}} // Fonte menor em telas pequenas
+						}} 
 						stroke={theme.palette.divider}
 					/>
 					<YAxis
@@ -63,7 +62,7 @@ export const WeightChart: React.FC<WeightChartProps> = ({ data }) => {
 							angle: -90,
 							position: 'insideLeft',
 							fill: theme.palette.text.secondary,
-							fontSize: isSmallScreen ? 10 : 12, // Fonte menor em telas pequenas
+							fontSize: isSmallScreen ? 10 : 12, 
 						}}
 						tick={{
 							fill: theme.palette.text.secondary,
@@ -83,7 +82,7 @@ export const WeightChart: React.FC<WeightChartProps> = ({ data }) => {
 						dataKey='weight'
 						stroke={theme.palette.primary.main}
 						strokeWidth={2}
-						dot={{ r: isSmallScreen ? 3 : 4, fill: theme.palette.primary.main }} // Pontos menores em telas pequenas
+						dot={{ r: isSmallScreen ? 3 : 4, fill: theme.palette.primary.main }} 
 						activeDot={{ r: isSmallScreen ? 5 : 6 }}
 						name='Peso (kg)'
 					/>
